@@ -11,11 +11,7 @@ export async function generateJWT(payload, privatePemKey) {
 
   const finalPayload = {
     ...payload,
-    iss: "test@example.com",
-    scope: "https://www.googleapis.com/auth/androidpublisher",
-    aud: "https://www.googleapis.com/oauth2/v4/token",
     exp: Math.floor(new Date().getTime() / 1000 + 300), // Set expiration 5 minutes from now
-    iat: Math.floor(new Date().getTime() / 1000), // Set issued at to current time
   };
 
   const jwt = await new SignJWT(finalPayload)
