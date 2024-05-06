@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "print": "node src/main.js",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "devDependencies": {
     "jose": "5.2.4",
