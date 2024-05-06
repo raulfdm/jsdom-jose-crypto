@@ -6,6 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "jose": "5.2.4"
+    "jose": "5.2.4",
+    "vitest": "1.6.0"
   }
 }
