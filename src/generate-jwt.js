@@ -1,5 +1,4 @@
 import { SignJWT, importPKCS8 } from "jose";
-import * as crypto from "node:crypto";
 
 /**
  * Generate a JWT token using the provided payload and private key
@@ -25,37 +24,4 @@ export async function generateJWT(payload, privatePemKey) {
     .sign(privateKey);
 
   return jwt;
-}
-
-console.log(
-  await generateJWT(
-    {
-      name: "John Doe",
-      role: "admin",
-      sub: "john.doe@email.com",
-      perms: ["create_feature_flag", "read_feature_flag"],
-    },
-    generateTestPrivateKey()
-  )
-);
-
-/**
- *
- * @returns Private key in PEM format
- */
-function generateTestPrivateKey() {
-  // Generate a test private key using Node.js crypto
-  const { privateKey } = crypto.generateKeyPairSync("rsa", {
-    modulusLength: 2048, // Generate a key with a 2048 bit modulus
-    publicKeyEncoding: {
-      type: "spki", // Recommended to use spki for public key encoding
-      format: "pem",
-    },
-    privateKeyEncoding: {
-      type: "pkcs8", // Ensure PKCS#8 format
-      format: "pem",
-    },
-  });
-
-  return privateKey; // Returns the privateKey as a PKCS#8 PEM string
 }
